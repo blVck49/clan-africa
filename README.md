@@ -18,7 +18,7 @@ npm install
 git clone https://github.com/blVck49/clan-africa.git
 ```
 
-- To run the code
+- Run the code
 ```bash
 npm run dev
 ```
