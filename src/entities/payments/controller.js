@@ -6,7 +6,7 @@ export const confirm = async (req, res) => {
     try {
         const { tx_ref, transaction_id } = req.body
         const reference = transaction_id
-        const payment = await verifyTransaction(reference);
+        const payment = await verifyTransaction(reference, process.env.secretKey);
         const paymentVerified = payment.data.status === "successful";
         if (!paymentVerified) return error(res, 404, "Payment unsuccessful");
         const result = await Booking.findByIdAndUpdate(tx_ref, { $set: { paid: true } }, { new: true })

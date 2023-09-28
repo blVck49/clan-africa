@@ -4,15 +4,15 @@ import { error } from "../../helpers/response";
 
 
 export const createSchema = Joi.object({
-    name: Joi.string().required(),
+    name: Joi.string().required().lowercase(),
     phone: Joi.string().required(),
     email: Joi.string().required(),
     flight: Joi.string().required(),
 }).required();
 
-export const getSchema = Joi.object({
-    name: Joi.string().required(),
-}).required();
+export const listSchema = Joi.object({
+    name: Joi.string().lowercase(),
+});
 
 export const validateCreate = async (req, res, next) => {
     const flight = await Flight.findById(req.body.flight)

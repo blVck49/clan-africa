@@ -23,6 +23,11 @@ git clone https://github.com/blVck49/clan-africa.git
 npm run dev
 ```
 
+- Test the code
+```bash
+npm run test
+```
+
 ## Documentation
 
 [Postman](https://documenter.getpostman.com/view/26208864/2s9YJZ2j4T)

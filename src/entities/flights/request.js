@@ -10,15 +10,15 @@ export const createSchema = Joi.object({
     first_class: Joi.number().required(),
     business: Joi.number().required(),
     economy: Joi.number().required(),
-    departure_city: Joi.string().required(),
-    destination_city: Joi.string().required(),
+    departure_city: Joi.string().required().lowercase(),
+    destination_city: Joi.string().required().lowercase(),
     date: Joi.date().required(),
     price: Joi.number().required(),
 }).required();
 
 export const listSchema = Joi.object({
-    departure_city: Joi.string(),
-    destination_city: Joi.string(),
+    departure_city: Joi.string().lowercase(),
+    destination_city: Joi.string().lowercase(),
     date: Joi.date()
 })
 

@@ -2,12 +2,12 @@ import { Router } from "express";
 import { validator } from "../../helpers/utils";
 import {
     create,
-    get
+    list
 
 } from "./controller";
 import {
     createSchema,
-    getSchema,
+    listSchema,
     validateCreate
 
 } from "./request";
@@ -16,8 +16,8 @@ import {
 const router = Router();
 
 
-router.post("/create", validateCreate, validator.body(createSchema), create);
-router.get("/get", validator.query(getSchema), get)
+router.post("/create", validator.body(createSchema), validateCreate, create);
+router.get("/list", validator.query(listSchema), list)
 
 
 

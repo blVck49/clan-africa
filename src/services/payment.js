@@ -2,11 +2,9 @@ import axios from "axios";
 
 const flutterwaveUrl = "https://api.flutterwave.com/v3";
 
-const { secretKey } = process.env
-
 const composeRavePayload = (data) => {
     return {
-        amount: data.amount / 100,
+        amount: data.amount,
         tx_ref: data.reference,
         redirect_url: data.callback_url || "#",
         customer: { email: data.email },
@@ -14,7 +12,7 @@ const composeRavePayload = (data) => {
     };
 };
 
-export const generatePaymentCheckoutLink = async (data) => {
+export const generatePaymentCheckoutLink = async (data, secretKey) => {
     try {
         const payload = composeRavePayload(data);
         const url = `${flutterwaveUrl}/payments`;
@@ -25,7 +23,7 @@ export const generatePaymentCheckoutLink = async (data) => {
     }
 };
 
-export const verifyTransaction = async (reference) => {
+export const verifyTransaction = async (reference, secretKey) => {
     try {
         const url = `${flutterwaveUrl}/transactions/${reference}/verify`;
         const response = await axios.get(url, { headers: { Authorization: `Bearer ${secretKey}` } });
