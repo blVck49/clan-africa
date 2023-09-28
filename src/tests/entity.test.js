@@ -1,10 +1,6 @@
 import app from "./setup/app";
 import supertest from "supertest";
 import { setupDB } from "./setup/db";
-import { generatePaymentCheckoutLink } from "../services/payment";
-import { Types } from "mongoose";
-
-const { ObjectId } = Types;
 
 const request = supertest(app)
 
@@ -14,7 +10,6 @@ let flight;
 
 describe('Flights & Bookings', () => {
 
-  
   it('Get Home page', async() => {
     const res = await request
       .get('/')
@@ -26,7 +21,6 @@ describe('Flights & Bookings', () => {
       .get('/flights/')
       expect(res.statusCode).toEqual(200)
       expect(res.body.status).toEqual(true)
-
   })
 
   it('Should get all available flights', async() => {
@@ -35,16 +29,13 @@ describe('Flights & Bookings', () => {
       flight = res.body.data.docs[0]
       expect(res.statusCode).toEqual(200)
       expect(res.body.status).toEqual(true)
-
-
-   })
+    })
 
   it('Should fail because status should be true', async() => {
     const res = await request
       .get('/bookings/list')
       expect(res.statusCode).toEqual(200)
       expect(res.body.status).toEqual(false)
-
   })
 
   it('Should get all available bookings', async() => {
@@ -52,7 +43,6 @@ describe('Flights & Bookings', () => {
       .get('/bookings/list')
       expect(res.statusCode).toEqual(200)
       expect(res.body.status).toEqual(true)
-
   })
 
   it('Should get all available bookings for john doe', async() => {

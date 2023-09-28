@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 
 module.exports = {
-     setupDB() {
+    setupDB() {
 
-        beforeAll( () => {
+        beforeAll(() => {
 
             mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-                          
+
         })
-        
+
     }
 }
 
-      
+
 
 
 
